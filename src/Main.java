@@ -2,10 +2,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Properties;
-import java.util.Random;
 public class Main {
     public static void main(String[] args) throws SQLException {
         Properties props = new Properties();
@@ -25,7 +22,7 @@ public class Main {
         Students students = new Students();
         Classes classes = new Classes();
         MajorMinor majorMinor = new MajorMinor();
-        Taking taking = new Taking();
+        TakingTaken takingTaken = new TakingTaken();
 
 //        departments.generateDepartments(mySt);
 //
@@ -35,8 +32,7 @@ public class Main {
 //
 //        majorMinor.generateMajorsAndMinors(mySt);
 
-//        taking.generateIsTaking(mySt);
-
+        takingTaken.generateIsTaking(mySt);
 
     }
 }
