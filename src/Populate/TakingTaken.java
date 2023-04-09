@@ -1,3 +1,5 @@
+package Populate;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -62,25 +64,26 @@ public class TakingTaken {
 
             if (year.equals("Fr")) {
                 numClasses = rand.nextInt(8) + 1;
-                rankingCounts.put(year, rankingCounts.get(year) + 1);
+//                rankingCounts.put(year, rankingCounts.get(year) + 1);
             }
 
             if (year.equals("So")) {
                 numClasses = rand.nextInt(5) + 10;
-                rankingCounts.put(year, rankingCounts.get(year) + 1);
+//                rankingCounts.put(year, rankingCounts.get(year) + 1);
             }
 
             if (year.equals("Ju")) {
                 numClasses = rand.nextInt(3) + 20;
-                rankingCounts.put(year, rankingCounts.get(year) + 1);
+//                rankingCounts.put(year, rankingCounts.get(year) + 1);
             }
 
             if (year.equals("Sr")) {
                 numClasses = 30;
-                rankingCounts.put(year, rankingCounts.get(year) + 1);
+//                rankingCounts.put(year, rankingCounts.get(year) + 1);
             }
-
-            for (int i = 0; i < numClasses; i++) {
+            int totalCredits = 0;
+            int i = 0;
+            while (i < numClasses) {
                 String grade = getRandomGrade();
                 int credits = rand.nextInt(2) + 3;
                 preparedStatement2.setString(1, sid);
@@ -88,7 +91,20 @@ public class TakingTaken {
                 preparedStatement2.setString(2, className);
                 preparedStatement2.setString(3, grade);
                 preparedStatement2.executeUpdate();
-                System.out.println("Taken class " + className + " for student " + sid);
+//                System.out.println("Taken class " + className + " for student " + sid);
+                if (!grade.equals("F")) {
+                    totalCredits += credits;
+                    i++;
+                }
+            }
+            if (totalCredits >= 0 && totalCredits <= 29) {
+                rankingCounts.put("Fr", rankingCounts.get("Fr") + 1);
+            } else if (totalCredits >= 30 && totalCredits <= 59) {
+                rankingCounts.put("So", rankingCounts.get("So") + 1);
+            } else if (totalCredits >= 60 && totalCredits <= 89) {
+                rankingCounts.put("Ju", rankingCounts.get("Ju") + 1);
+            } else if (totalCredits >= 90 && totalCredits <= 120) {
+                rankingCounts.put("Sr", rankingCounts.get("Sr") + 1);
             }
         }
         System.out.println(rankingCounts.get("Fr"));
@@ -100,13 +116,13 @@ public class TakingTaken {
         String grade = "";
         Random rand = new Random();
         int num = rand.nextInt(100) + 1;
-        if (num <= 20) { // 20% chance of getting an A
+        if (num <= 30) { // 30% chance of getting an A
             grade = "A";
-        } else if (num <= 50) { // 30% chance of getting a B
+        } else if (num <= 70) { // 40% chance of getting a B
             grade = "B";
-        } else if (num <= 80) { // 30% chance of getting a C
+        } else if (num <= 85) { // 15% chance of getting a C
             grade = "C";
-        } else if (num <= 95) { // 15% chance of getting a D
+        } else if (num <= 95) { // 10% chance of getting a D
             grade = "D";
         } else { // 5% chance of getting an F
             grade = "F";

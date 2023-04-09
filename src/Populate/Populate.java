@@ -1,12 +1,16 @@
+package Populate;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.Properties;
-public class Main {
+
+public class Populate {
     public static void main(String[] args) throws SQLException {
+
         Properties props = new Properties();
-        try (InputStream in = new FileInputStream("src/db.properties")) {
+        try (InputStream in = new FileInputStream("src/Populate/db.properties")) {
             props.load(in);
         } catch (IOException e) {
             System.out.println("Database information not provided.");
