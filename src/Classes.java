@@ -81,15 +81,16 @@ public class Classes {
 
     private void removeClass(String className, String[] classes, boolean three) {
         String[] temp = new String[classes.length - 1];
-        for (int i = 0; i < classes.length - 1; i++) {
+        int j = 0;
+        for (int i = 0; i < classes.length; i++) {
             if (classes[i].equals(className))
                 continue;
-            temp[i] = classes[i];
+            temp[j] = classes[i];
+            j++;
         }
         if (three)
             threeCreditClasses = temp;
         else
             fourCreditClasses = temp;
     }
-
 }

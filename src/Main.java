@@ -9,7 +9,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) throws SQLException {
         Properties props = new Properties();
-        try (InputStream in = new FileInputStream("path/to/db.properties")) {
+        try (InputStream in = new FileInputStream("src/db.properties")) {
             props.load(in);
         } catch (IOException e) {
             System.out.println("Database information not provided.");
@@ -27,15 +27,15 @@ public class Main {
         MajorMinor majorMinor = new MajorMinor();
         Taking taking = new Taking();
 
-        departments.generateDepartments(mySt);
+//        departments.generateDepartments(mySt);
+//
+//        students.generateStudents(mySt);
+//
+//        classes.generateClasses(mySt);
+//
+//        majorMinor.generateMajorsAndMinors(mySt);
 
-        students.generateStudents(mySt);
-
-        classes.generateClasses(mySt);
-
-        majorMinor.generateMajorsAndMinors(mySt);
-
-        taking.generateIsTaking(mySt);
+//        taking.generateIsTaking(mySt);
 
 
     }

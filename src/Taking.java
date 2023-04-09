@@ -25,6 +25,8 @@ public class Taking {
                 preparedStatement.setString(1, sid);
                 String className = classes.getRandomClass(credits);
                 preparedStatement.setString(2, className);
+                preparedStatement.executeUpdate();
+                System.out.println("Inserted class " + className + " for student " + sid);
             }
         }
     }
