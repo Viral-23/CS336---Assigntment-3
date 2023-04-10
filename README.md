@@ -15,7 +15,7 @@ This file contains the user query software, which allows the user to query diffe
 Most (if not all) errors are handled so that invalid inputs will not cause the application to break. The way to run this is by inputting the database url, username, and password as command line arguments in that order. A while loop and a switch statement work together to keep asking the user the option and necessary information required to run the queries.
 
 ## Data Population:
-All methods to populate the database are found in the populate package. 
+All methods to populate the database are found in the populate package. The database url, username, and password are stored in the properties file, which are read in the Populate "main" method. This is to ensure the username and password are hidden.
 
 ### Students:
 Populates the Students table in the College database. There are two arrays, including 10 different first name options and 10 different last name options. The names are not selected randomly, but selected through each iteration at the corresponding index. The ID is randomly selected, and a hashmap is used to keep track of previously generated IDs since they must be unique. A prepared statement is used to insert the student information into the database, generating unique students.
