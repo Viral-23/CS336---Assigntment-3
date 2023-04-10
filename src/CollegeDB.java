@@ -7,7 +7,7 @@ public class CollegeDB {
         if (args.length != 3)
             System.out.print("Invalid Command line arguments.");
 
-        String url = args[0];
+        String url = "jdbc:mysql://" + args[0];
         String username = args[1];
         String password = args[2];
 
